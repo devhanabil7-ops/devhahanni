@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Devha 💕 Hanni</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+    background: linear-gradient(135deg, #ffd6e8, #d6f0ff);
+    text-align: center;
+    color: #ff6fa5;
+    overflow-x: hidden;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 45px;
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.btn {
+    margin-top: 25px;
+    padding: 12px 25px;
+    border-radius: 25px;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+    background: white;
+    color: #ff6fa5;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #ffb6d9;
+    transform: scale(1.1);
+}
+
+.section {
+    padding: 70px 20px;
+    background: #ffffffcc;
+    border-radius: 30px;
+    margin: 20px;
+}
+
+.countdown {
+    font-size: 22px;
+    margin-top: 15px;
+}
+
+footer {
+    padding: 15px;
+    font-size: 14px;
+}
+
+/* floating hearts */
+.heart {
+    position: fixed;
+    font-size: 18px;
+    animation: float 6s linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes float {
+    0% {transform: translateY(100vh);}
+    100% {transform: translateY(-10vh);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+    <h1>Devha 💕 Hanni</h1>
+    <div class="subtitle">Our Sweet Forever Begins 🌷</div>
+    <button class="btn" onclick="scrollToStory()">Lihat Cerita Kami 💌</button>
+</div>
+
+<div class="section" id="story">
+    <h2>Cerita Cinta Kami 🌸</h2>
+    <p>
+        Dari obrolan sederhana, tumbuh rasa yang luar biasa.  
+        Devha menemukan rumah dalam senyum Hanni,  
+        dan Hanni menemukan masa depan dalam hati Devha.  
+        Bersama, kami memilih untuk selamanya. 💍✨
+    </p>
+
+    <h2>Hari Bahagia Kami 💖</h2>
+    <div class="countdown" id="countdown"></div>
+</div>
+
+<footer>
+    With love, Devha & Hanni 🌷 2026
+</footer>
+
+<script>
+function scrollToStory() {
+    document.getElementById("story").scrollIntoView({behavior:"smooth"});
+}
+
+// GANTI tanggal ini sesuai hari pernikahan kalian
+const weddingDate = new Date("2026-12-20");
+
+function updateCountdown() {
+    const now = new Date();
+    const distance = weddingDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+
+    if (distance > 0) {
+        document.getElementById("countdown").innerHTML =
+            days + " hari lagi menuju hari bahagia 💕";
+    } else {
+        document.getElementById("countdown").innerHTML =
+            "Hari ini kami menikah! 💍✨";
+    }
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💗";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}
+
+setInterval(createHeart, 700);
+</script>
+
+</body>
+</html>
